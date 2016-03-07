@@ -1,0 +1,153 @@
+
+li.borderless {
+    border-top: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+.rigth-text {
+    text-align: left;
+}
+
+.padding-off {
+    padding: 0 !important;
+}
+
+.without-margin {
+    margin: 0 !important;
+}
+
+.polig {
+    width: 100%;
+    height: 70px;
+}
+
+.polig.color1 {
+    background: #fbffc4;
+}
+
+.polig.color2 {
+    background: #c4d79b;
+}
+
+.polig.color3 {
+    background: #fabf8f;
+}
+
+.polig.color4 {
+    background: #da9694;
+}
+.polig[data-scale="0"] {
+    width: 100%;
+    height: 70px;
+    background: #ffffff;
+}
+
+.polig[data-scale="1"] {
+    width: 100%;
+    height: 70px;
+    background: #e5e23a;
+}
+
+.polig[data-scale="2"] {
+    width: 100%;
+    height: 70px;
+    background: #6cf435;
+}
+
+.polig[data-scale="3"] {
+    width: 100%;
+    height: 70px;
+    background: #cd2d2b;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.blue {
+    color: #0e2697;
+}
+
+.border-points {
+    border-bottom: 1px dotted #9999CC;
+    text-decoration: none;
+}
+
+.circle1 {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    background: #2be600;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+.circle1[data-scale="0"] {
+    width: 15px;
+    height: 15px;
+    background: #e5e23a;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+.circle1[data-scale="1"] {
+    width: 15px;
+    height: 15px;
+    background: #6cf435;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+.circle1[data-scale="2"] {
+    width: 15px;
+    height: 15px;
+    background: #e60012;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+
+
+.tr-active {
+    background-color: #f5f5f5;
+}
+
+.tr-green {
+    background-color: #c4d79b;
+}
+
+.tr-gray {
+    background-color: #646464;
+}
+
+th.row-header {
+    padding: 0 10px !important;
+    border-top: 1px solid #ccc !important;
+}
+
+div.vertical
+{
+    margin-top:110px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg); /* Safari/Chrome */
+    -moz-transform: rotate(-90deg); /* Firefox */
+    -o-transform: rotate(-90deg); /* Opera */
+    -ms-transform: rotate(-90deg); /* IE 9 */
+}
+
+td.vertical
+{
+
+    padding-bottom: 20px;
+    text-align: left;
+}
+
+.border{
+    border: 1px dotted #8e8e8e;
+}
+
+.table-scroll {
+    height:355px;
+    overflow:auto;
+}
