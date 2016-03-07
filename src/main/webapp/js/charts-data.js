@@ -4,7 +4,7 @@
 $(document).ready(
 		function() {
 			initSelect()
-			initGouge();
+
 			data = {
 				"datosGenerales" : {
 					"nombre" : "b",
@@ -77,7 +77,7 @@ $(document).ready(
 				initDatosG()
 				initSignosVitales();
 				initCostos();
-				
+				initGouge();
 				initPieChart(d);
 				planificacionChart(d);
 				initPlanificacion();
@@ -101,9 +101,13 @@ $(document).ready(
 								size : 4
 							});
 							select.on('change', function() {
-								$.get("api/projectdata?id=" + select.val(),
+								$.get(
+										"api/projectdata?id=" + select.val(),
 										function(data) {
+											$('#dashboard').css('display',
+													'block');
 											init(JSON.parse(data))
+
 										}).error(function(e) {
 									console.log(e)
 								});
@@ -128,6 +132,7 @@ $(document).ready(
 					label : "Disponible",
 					data : disponible
 				} ];
+				$("#pie-chart").empty()
 				$.plot($("#pie-chart"), data, {
 					series : {
 						pie : {
@@ -156,29 +161,34 @@ $(document).ready(
 			}
 
 			function initGouge() {
-				var g1 = new JustGage({
-					id : 'g1',
-					value : 0,
-					min : 0,
-					max : 100,
-					symbol : '%',
-					pointer : true,
-					gaugeWidthScale : 1.4,
-					customSectors : [ {
-						color : '#ff0000',
-						lo : 50,
-						hi : 100
-					}, {
-						color : '#00ff00',
-						lo : 0,
-						hi : 50
-					} ],
-					counter : true
-				});
+				$('#g1').empty()
+				if ($('#dashboard').is(":visible"))
+					g1 = new JustGage({
+						id : 'g1',
+						value : 0,
+						min : 0,
+						max : 100,
+						symbol : '%',
+						pointer : true,
+						gaugeWidthScale : 1.4,
+						customSectors : [ {
+							color : '#ff0000',
+							lo : 50,
+							hi : 100
+						}, {
+							color : '#00ff00',
+							lo : 0,
+							hi : 50
+						} ],
+						counter : true
+					});
 			}
 
 			function planificacionChart(d) {
+				$('#planificacionChart').empty();
+				
 				var data = d.plan;
+
 				Morris.Line({
 					element : 'planificacionChart',
 					data : data,

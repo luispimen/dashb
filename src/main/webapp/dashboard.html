@@ -3,476 +3,484 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+<title>SB Admin - Bootstrap Admin Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
 
-    <link href="css/dashboard.css" rel="stylesheet">
+<link href="css/dashboard.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="css/plugins/morris.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <link href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+<!-- Custom Fonts -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<link
+	href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"
+	rel="stylesheet" type="text/css">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
     <script src="js/plugins/justgage.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>-->
 
-    <![endif]-->
+<![endif]-->
 
 </head>
 
 <body>
 
 
-<!-- Navigation -->
+	<!-- Navigation -->
 
 
-<div id="page-wrapper">
+	<div id="page-wrapper">
 
 
-    <div class="row">
-        <div class="col-md-6" style="padding-left: 20px">
-            <h2 class="page-header" id="nombreP"></h2>
-        </div>
-        <div class="col-md-6">
-            <p>Proyectos</p>
-            <select class="selectpicker" data-live-search="true">
-                <option value="-1">Seleccione</option>                
-            </select>
-        </div>
+		<div class="row">
+			<div class="col-md-6" style="padding-left: 20px">
+				<h2 class="page-header" id="nombreP"></h2>
+			</div>
+			<div class="col-md-6">
+				<p>Proyectos</p>
+				<select class="selectpicker" data-live-search="true">
+					<option value="-1">Seleccione</option>
+				</select>
+			</div>
 
 
-    </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-green" style="height: 150px">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Datos del proyecto
-                    </h3>
-                </div>
-                <div class="panel-body padding-off">
-                    <table class="table without-margin">
-                        <tbody>
-                        <tr style="border-top: none !important;">
-                            <td><strong>Jefe de proyecto</strong></td>
-                            <td><span id="jefeProyecto"></span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sponsor</strong></td>
-                            <td><span id="sponsor"></span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>L&iacute;der de proyecto</strong></td>
-                            <td><span id="liderProyecto"></span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+		</div>
+		<!-- /.row -->
+		<div id="dashboard" style="display: none">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-green" style="height: 150px">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Datos del proyecto
+							</h3>
+						</div>
+						<div class="panel-body padding-off">
+							<table class="table without-margin">
+								<tbody>
+									<tr style="border-top: none !important;">
+										<td><strong>Jefe de proyecto</strong></td>
+										<td><span id="jefeProyecto"></span></td>
+									</tr>
+									<tr>
+										<td><strong>Sponsor</strong></td>
+										<td><span id="sponsor"></span></td>
+									</tr>
+									<tr>
+										<td><strong>L&iacute;der de proyecto</strong></td>
+										<td><span id="liderProyecto"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 
 
-        <div class="col-md-4">
-            <div class="panel panel-green" style="height: 150px">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Signos vitales
-                    </h3>
-                </div>
-                <div class="panel-body padding-off">
-                    <table class="table without-margin table-bordered" style="table-layout:fixed">
-                        <thead align="center">
-                        <tr>
-                            <th class="text-center">Costo</th>
-                            <th class="text-center">Avance</th>
-                            <th class="text-center">Documento</th>
-                            <th class="text-center">RRHH</th>
-                            <th class="text-center">Problemas</th>
-                            <th class="text-center">#CC</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr style="border-top: none !important;">
-                            <td class="padding-off">
-                                <div class="polig" id="costo" data-scale="0"></div>
-                            </td>
-                            <td class="padding-off ">
-                                <div class="polig" id="avance"  data-scale="0"></div>
-                            </td>
-                            <td class="padding-off ">
-                                <div class="polig" id="documento" data-scale="0"></div>
-                            </td>
-                            <td class="padding-off ">
-                                <div class="polig" id="rrhh" data-scale="0"></div>
-                            </td>
-                            <td class="padding-off ">
-                                <div class="polig" id="problemas" data-scale="0"></div>
-                            </td>
-                            <td class="padding-off ">
-                                <div class="polig" id="cc" data-scale="0"></div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+				<div class="col-md-4">
+					<div class="panel panel-green" style="height: 150px">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Signos vitales
+							</h3>
+						</div>
+						<div class="panel-body padding-off">
+							<table class="table without-margin table-bordered"
+								style="table-layout: fixed">
+								<thead align="center">
+									<tr>
+										<th class="text-center">Costo</th>
+										<th class="text-center">Avance</th>
+										<th class="text-center">Documento</th>
+										<th class="text-center">RRHH</th>
+										<th class="text-center">Problemas</th>
+										<th class="text-center">#CC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="border-top: none !important;">
+										<td class="padding-off">
+											<div class="polig" id="costo" data-scale="0"></div>
+										</td>
+										<td class="padding-off ">
+											<div class="polig" id="avance" data-scale="0"></div>
+										</td>
+										<td class="padding-off ">
+											<div class="polig" id="documento" data-scale="0"></div>
+										</td>
+										<td class="padding-off ">
+											<div class="polig" id="rrhh" data-scale="0"></div>
+										</td>
+										<td class="padding-off ">
+											<div class="polig" id="problemas" data-scale="0"></div>
+										</td>
+										<td class="padding-off ">
+											<div class="polig" id="cc" data-scale="0"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 
 
-        <div class="col-md-4">
-            <div class="panel panel-green" style="height: 150px">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Descripci&oacute;n breve del
-                        proyecto
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <p id="descripcion"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-green" style="height: 420px">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Costos en: <span id="moneda"
-                            >UF</span>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <table>
-                                <tr class="border-points">
-                                    <td style="width: 75px;padding-top: 20px">Ppto Inicial</td>
-                                    <td style="padding-left: 35px;padding-top: 20px"><span class="blue presupuesto"> 240.00</span>
-                                    </td>
-                                </tr>
-                                <tr class="border-points">
-                                    <td style="width: 75px;padding-top: 30px">Ppto Actual</td>
-                                    <td style="padding-left: 35px;padding-top: 30px"><span class="blue presupuesto"> 240.00</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br>
-                            <br>
-                            <br>
-                            <table>
-                                <tr class="border-points tr-active">
-                                    <td style="width: 75px">Planificado a la fecha</td>
-                                    <td style="padding-left: 35px"><span class="blue" id="planificadoFecha"> 240.00</span></td>
-                                </tr>
-                                <tr class="border-points tr-active">
-                                    <td style="width: 75px;padding-top: 10px">Gastado</td>
-                                    <td style="padding-left: 35px;padding-top: 10px"><span class="blue" id="gastado"> 240.00</span>
-                                    </td>
-                                </tr>
-                                <tr class="border-points tr-active">
-                                    <td style="width: 75px;padding-top: 10px">Indicador</td>
-                                    <td style="padding-left: 20px; padding-top: 20px">
-                                        <label class="circle1" data-scale="1" id="indicador"></label>
-                                    </td>
-                                </tr>
+				<div class="col-md-4">
+					<div class="panel panel-green" style="height: 150px">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Descripci&oacute;n breve del
+								proyecto
+							</h3>
+						</div>
+						<div class="panel-body">
+							<p id="descripcion"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-green" style="height: 420px">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Costos en: <span id="moneda">UF</span>
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<table>
+										<tr class="border-points">
+											<td style="width: 75px; padding-top: 20px">Ppto Inicial</td>
+											<td style="padding-left: 35px; padding-top: 20px"><span
+												class="blue presupuesto"> 240.00</span></td>
+										</tr>
+										<tr class="border-points">
+											<td style="width: 75px; padding-top: 30px">Ppto Actual</td>
+											<td style="padding-left: 35px; padding-top: 30px"><span
+												class="blue presupuesto"> 240.00</span></td>
+										</tr>
+									</table>
+									<br> <br> <br>
+									<table>
+										<tr class="border-points tr-active">
+											<td style="width: 75px">Planificado a la fecha</td>
+											<td style="padding-left: 35px"><span class="blue"
+												id="planificadoFecha"> 240.00</span></td>
+										</tr>
+										<tr class="border-points tr-active">
+											<td style="width: 75px; padding-top: 10px">Gastado</td>
+											<td style="padding-left: 35px; padding-top: 10px"><span
+												class="blue" id="gastado"> 240.00</span></td>
+										</tr>
+										<tr class="border-points tr-active">
+											<td style="width: 75px; padding-top: 10px">Indicador</td>
+											<td style="padding-left: 20px; padding-top: 20px"><label
+												class="circle1" data-scale="1" id="indicador"></label></td>
+										</tr>
 
-                            </table>
-                            <table style="margin-top: 20px">
-                                <tr class="border-points tr-green">
-                                    <td style="width: 75px">Disponible</td>
-                                    <td style="padding-left: 35px"><span class="blue" id="disponible">UF 240.00</span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <div style="height: 120px; height: 120px;" id="g1"></div>
-                            <div class="flot-chart" style="width: 170px; height: 230px">
-                                <div class="flot-chart-content" id="pie-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-8">
-            <div class="panel panel-green" style="height: 420px">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Planificaci&oacute;n
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div id="planificacionChart"></div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <table class="table table-bordered">
-                                <thead align="center">
-                                <tr>
-                                    <th class="text-center" >% avance</th>
-                                    <th class="text-center" >Fin des.</th>
-                                    <th class="text-center" >Inicio Cert.</th>
-                                    <th class="text-center" >Inicio Inst</th>
-                                    <th class="text-center" >Fin Proyecto</th>
-                                </tr>
-                                </thead>
-                                <tbody align="center">
-                                <tr style="color: white" class="tr-gray">
-                                    <td>
-                                        <div id="p1"></div>
-                                    </td>
-                                    <td>
-                                        <div id="p2"></div>
-                                    </td>
-                                    <td>
-                                        <div id="p3"></div>
-                                    </td>
-                                    <td>
-                                        <div id="p4"></div>
-                                    </td>
-                                    <td>
-                                        <div id="p5"></div>
-                                    </td>
+									</table>
+									<table style="margin-top: 20px">
+										<tr class="border-points tr-green">
+											<td style="width: 75px">Disponible</td>
+											<td style="padding-left: 35px"><span class="blue"
+												id="disponible">UF 240.00</span></td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-md-6">
+									<div style="height: 120px; height: 120px;" id="g1"></div>
+									<div class="flot-chart" style="width: 170px; height: 230px">
+										<div class="flot-chart-content" id="pie-chart"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
-                                </tr>
-                                </tbody>
+				<div class="col-md-8">
+					<div class="panel panel-green" style="height: 420px">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Planificaci&oacute;n
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div id="planificacionChart">
+										
+									</div>
+								</div>
+								<div class="col-md-6">
 
-                            </table>
-
-                            <div class="panel panel-default" style="height:250px">
-                                <div class="panel-heading">Resumen</div>
-                                <div class="panel-body">
-                                    Resumen content
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Riesgos
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <table class="table without-margin" style="table-layout:fixed">
-                                <thead align="center">
-                                <tr>
-                                    <th style="width: 40px"></th>
-                                    <th class="text-center tr-green" colspan="4">Matriz de riesgos</th>
-                                </tr>
-                                </thead>
-                                <tbody align="center">
-                                <tr>
-                                    <td class="tr-active vertical" rowspan="4">
-                                        <div class="vertical">Impacto</div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color3 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color4 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color4 border"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="padding-off">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off">
-                                        <div class="polig color3 border"></div>
-                                    </td>
-                                    <td class="padding-off">
-                                        <div class="polig color4 border"></div>
-                                    </td>
-                                </tr>
-                                <tr style="border-top: none !important;">
-                                    <td class="padding-off">
-                                        <div class="polig color2 border"></div>
-                                    </td>
-                                    <td class="padding-off">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color3 border"></div>
-                                    </td>
-                                </tr>
-                                <tr style="border-top: none !important;">
-                                    <td class="padding-off ">
-                                        <div class="polig color2 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color2 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                    <td class="padding-off ">
-                                        <div class="polig color1 border"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td colspan="4" class="tr-active">
-                                        Probabilidad
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-md-8">
-                            <table class="table table-bordered" id="table">
-                                <thead align="center">
-                                <tr class="tr-green">
-                                    <th class="text-center">id</th>
-                                    <th class="text-center">Impacto</th>
-                                    <th class="text-center">Mitigaci&oacute;n</th>
-                                    <th class="text-center">Variable afectada</th>
-                                    <th class="text-center">Factor de riesgo</th>
-                                </tr>
-                                </thead>
-                                <tbody align="center">
-                                <tr>
-                                    <td>
-                                        <div>1</div>
-                                    </td>
-                                    <td>
-                                        <div>2</div>
-                                    </td>
-                                    <td>
-                                        <div>3</div>
-                                    </td>
-                                    <td>
-                                        <div>4</div>
-                                    </td>
-                                    <td>
-                                        <div>5</div>
-                                    </td>
-                                </tr>
+									<table class="table table-bordered">
+										<thead align="center">
+											<tr>
+												<th class="text-center">% avance</th>
+												<th class="text-center">Fin des.</th>
+												<th class="text-center">Inicio Cert.</th>
+												<th class="text-center">Inicio Inst</th>
+												<th class="text-center">Fin Proyecto</th>
+											</tr>
+										</thead>
+										<tbody align="center">
+											<tr style="color: white" class="tr-gray">
+												<td>
+													<div id="p1"></div>
+												</td>
+												<td>
+													<div id="p2"></div>
+												</td>
+												<td>
+													<div id="p3"></div>
+												</td>
+												<td>
+													<div id="p4"></div>
+												</td>
+												<td>
+													<div id="p5"></div>
+												</td>
 
 
-                                </tbody>
+											</tr>
+										</tbody>
 
-                            </table>
-                        </div>
+									</table>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Activades Realizadas
-                    </h3>
-                </div>
-                <div class="panel-body">
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Activades Retrasadas
-                    </h3>
-                </div>
-                <div class="panel-body">
+									<div class="panel panel-default" style="height: 250px">
+										<div class="panel-heading">Resumen</div>
+										<div class="panel-body">Resumen content</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-green">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Riesgos
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<table class="table without-margin" style="table-layout: fixed">
+										<thead align="center">
+											<tr>
+												<th style="width: 40px"></th>
+												<th class="text-center tr-green" colspan="4">Matriz de
+													riesgos</th>
+											</tr>
+										</thead>
+										<tbody align="center">
+											<tr>
+												<td class="tr-active vertical" rowspan="4">
+													<div class="vertical">Impacto</div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color3 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color4 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color4 border"></div>
+												</td>
+											</tr>
+											<tr>
+												<td class="padding-off">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off">
+													<div class="polig color3 border"></div>
+												</td>
+												<td class="padding-off">
+													<div class="polig color4 border"></div>
+												</td>
+											</tr>
+											<tr style="border-top: none !important;">
+												<td class="padding-off">
+													<div class="polig color2 border"></div>
+												</td>
+												<td class="padding-off">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color3 border"></div>
+												</td>
+											</tr>
+											<tr style="border-top: none !important;">
+												<td class="padding-off ">
+													<div class="polig color2 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color2 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color1 border"></div>
+												</td>
+												<td class="padding-off ">
+													<div class="polig color1 border"></div>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td colspan="4" class="tr-active">Probabilidad</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="col-md-8">
+									<table class="table table-bordered" id="table">
+										<thead align="center">
+											<tr class="tr-green">
+												<th class="text-center">id</th>
+												<th class="text-center">Impacto</th>
+												<th class="text-center">Mitigaci&oacute;n</th>
+												<th class="text-center">Variable afectada</th>
+												<th class="text-center">Factor de riesgo</th>
+											</tr>
+										</thead>
+										<tbody align="center">
+											<tr>
+												<td>
+													<div>1</div>
+												</td>
+												<td>
+													<div>2</div>
+												</td>
+												<td>
+													<div>3</div>
+												</td>
+												<td>
+													<div>4</div>
+												</td>
+												<td>
+													<div>5</div>
+												</td>
+											</tr>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Pr&oacute;ximas Actividades
-                    </h3>
-                </div>
-                <div class="panel-body">
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.row -->
+										</tbody>
 
-</div>
-<!-- /.container-fluid -->
+									</table>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Activades Realizadas
+							</h3>
+						</div>
+						<div class="panel-body"></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Activades Retrasadas
+							</h3>
+						</div>
+						<div class="panel-body"></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<i class="fa fa-bar-chart-o"></i> Pr&oacute;ximas Actividades
+							</h3>
+						</div>
+						<div class="panel-body"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container-fluid -->
 
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="js/plugins/morris/raphael.min.js"></script>
-<script src="js/plugins/morris/morris.min.js"></script>
-<!--<script src="js/plugins/morris/morris-data.js"></script>-->
+	<!-- Morris Charts JavaScript -->
+	<script src="js/plugins/morris/raphael.min.js"></script>
+	<script src="js/plugins/morris/morris.min.js"></script>
+	<!--<script src="js/plugins/morris/morris-data.js"></script>-->
 
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]>
+	<!-- Flot Charts JavaScript -->
+	<!--[if lte IE 8]>
 <script src="js/excanvas.min.js"></script><![endif]-->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="js/plugins/flot/jquery.flot.pie.js"></script>
+	<script src="js/plugins/flot/jquery.flot.js"></script>
+	<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+	<script src="js/plugins/flot/jquery.flot.pie.js"></script>
 
-<script src="js/plugins/justgage.js"></script>
+	<script src="js/plugins/justgage.js"></script>
 
-<script src="js/charts-data.js"></script>
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script src="js/charts-data.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
 </body>
 
