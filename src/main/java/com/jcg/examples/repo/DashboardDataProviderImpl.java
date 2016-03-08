@@ -3,6 +3,7 @@ package com.jcg.examples.repo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -202,6 +203,19 @@ public class DashboardDataProviderImpl implements DashboardDataProvider {
 					}
 				}
 				for (String date : pointMap.keySet()) {
+					SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yy");
+					Date dateD = null;
+					String dateNewFormat = date;
+					try {
+						dateD = dt.parse(date);
+						dt = new SimpleDateFormat("yyyy-MM-dd");
+						dateNewFormat = dt.format(dateD);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					pointMap.get(date).setDate(dateNewFormat);
+
 					list.add(pointMap.get(date));
 				}
 				return list;
