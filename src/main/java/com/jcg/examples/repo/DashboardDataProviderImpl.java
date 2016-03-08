@@ -51,6 +51,7 @@ public class DashboardDataProviderImpl implements DashboardDataProvider {
 							ProjectDetails projectDetails = new ProjectDetails();
 							projectDetails.setDesc((resultSet.getString("PROJECT_DESC") != null)
 									? resultSet.getString("PROJECT_DESC") : "");
+							projectDetails.setResumen(projectDetails.getDesc());
 							projectDetails.setId(resultSet.getLong("PROJECT_ID"));
 							projectDetails.setName(resultSet.getString("PROJECT_NAME") != null
 									? resultSet.getString("PROJECT_NAME") : "");
@@ -542,6 +543,10 @@ public class DashboardDataProviderImpl implements DashboardDataProvider {
 				}
 			});
 
+			if (rrhhInd < 0)
+				rrhhInd = 3;
+			else if (rrhhInd > 0)
+				rrhhInd = 2;
 			signosVitales.setRrhh(rrhhInd);
 
 		}

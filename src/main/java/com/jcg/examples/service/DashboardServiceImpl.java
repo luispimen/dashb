@@ -80,6 +80,21 @@ public class DashboardServiceImpl implements DashboardService {
 
 		// Signos vitales
 		SignosVitales signosVitales = dataProvider.getSignosVitales(id);
+		int costo = 1;
+		if (dashboardData.getCosto().getPlanificadoFecha() < dashboardData.getCosto().getGastado())
+			costo = 3;
+		
+		signosVitales.setCosto(costo);
+
+		int plan = 2;
+		if (dashboardData.getPlan().size() > 0) {
+			if (dashboardData.getPlan().get(dashboardData.getPlan().size() - 1).getPlan() > dashboardData.getPlan()
+					.get(dashboardData.getPlan().size() - 1).getReal())
+				plan = 3;
+		}
+
+		signosVitales.setAvance(plan);
+
 		// int avance = 0;
 		// signosVitales.setAvance(avance);
 		dashboardData.setSignosVitales(signosVitales);

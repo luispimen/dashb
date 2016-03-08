@@ -20,6 +20,7 @@ $(document).ready(
 				$('#sponsor').text(data.datosGenerales.sponsor)
 				$('#liderProyecto').text(data.datosGenerales.lider)
 				$('#descripcion').text(data.datosGenerales.desc)
+				$('#resumen').text(data.datosGenerales.resumen)
 			}
 
 			function initSignosVitales() {

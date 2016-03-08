@@ -8,6 +8,7 @@ import java.util.Date;
  */
 public class ProjectDetails implements Serializable {
 	private String jefeProyecto;
+	private String resumen;
 	private String sponsor;
 	private String lider;
 	private String desc;
@@ -16,6 +17,14 @@ public class ProjectDetails implements Serializable {
 	private long id;
 	private Date startDate;
 	private Date endDate;
+
+	public String getResumen() {
+		return resumen;
+	}
+
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
+	}
 
 	public Long getPorciento() {
 		return porciento;
