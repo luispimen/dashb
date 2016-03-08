@@ -54,22 +54,41 @@ $(document).ready(
 			}
 
 			function initTable() {
-				var dataSet = [
-						[ "Tiger Nixon", "System Architect", "Edinburgh",
-								"5421", "2011/04/25" ],
-						[ "Yuri Berry", "Chief Marketing Officer (CMO)",
-								"6154", "2009/06/25", "$675,000" ],
 
-				]
+				var dataSet = [];
+
+				data.riesgos.forEach(function(item) {
+					dataSet
+							.push([ item.factorDeRiesgo, item.impacto,
+									item.mitigacion, item.nombre,
+									item.variableAfectada ])
+				})
+
 				$('#table').DataTable({
-					data : dataSet,
+					"data" : dataSet,
 					"scrollY" : "280px",
 					"scrollCollapse" : true,
 					"paging" : false,
 					"ordering" : false,
 					"info" : false,
-					searching : false
+					"searching" : false,
+					"bDestroy" : true
 				});
+			}
+			function initLists() {
+				$("#l1").empty()
+				$("#l2").empty()
+				$("#l3").empty()
+
+				data.resumenTareas.realizadas.forEach(function(item) {
+					$("#l1").append("<li>" + item + "</li>")
+				})
+				data.resumenTareas.retrasadas.forEach(function(item) {
+					$("#l2").append("<li>" + item + "</li>")
+				})
+				data.resumenTareas.proximas.forEach(function(item) {
+					$("#l3").append("<li>" + item + "</li>")
+				})
 			}
 
 			function init(d) {
@@ -82,6 +101,7 @@ $(document).ready(
 				planificacionChart(d);
 				initPlanificacion();
 				initTable();
+				initLists();
 
 			}
 
@@ -186,7 +206,7 @@ $(document).ready(
 
 			function planificacionChart(d) {
 				$('#planificacionChart').empty();
-				
+
 				var data = d.plan;
 
 				Morris.Line({

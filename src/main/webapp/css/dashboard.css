@@ -148,6 +148,6 @@ td.vertical
 }
 
 .table-scroll {
-    height:355px;
+    height:200px;
     overflow:auto;
 }
