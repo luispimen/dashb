@@ -80,6 +80,8 @@ public class DashboardServiceImpl implements DashboardService {
 
 		// Signos vitales
 		SignosVitales signosVitales = dataProvider.getSignosVitales(id);
+		// int avance = 0;
+		// signosVitales.setAvance(avance);
 		dashboardData.setSignosVitales(signosVitales);
 
 		return dashboardData;
