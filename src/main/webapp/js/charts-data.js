@@ -214,8 +214,8 @@ $(document).ready(
 					element : 'planificacionChart',
 					data : data,
 					xkey : 'fecha',
-					ykeys : [ 'plan', 'real' ],
-					labels : [ 'Plan', 'Real' ]
+					ykeys : [ 'plan', 'real', 'base' ],
+					labels : [ 'Plan', 'Real', 'base' ]
 				});
 			}
 

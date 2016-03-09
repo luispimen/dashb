@@ -19,86 +19,87 @@ import java.util.List;
  * Created by lpimentel on 03-03-2016.
  */
 public class DashboardServiceImpl implements DashboardService {
-	private DashboardService dashboardServiceMock = new DashboardServiceMockImpl();
-	private DashboardDataProvider dataProvider;
+    private DashboardService dashboardServiceMock = new DashboardServiceMockImpl();
+    private DashboardDataProvider dataProvider;
 
-	public void setDataProvider(DashboardDataProvider dataProvider) {
-		this.dataProvider = dataProvider;
-	}
+    public void setDataProvider(DashboardDataProvider dataProvider) {
+        this.dataProvider = dataProvider;
+    }
 
-	@Override
-	public List<Project> getAllProjects() {
-		return dataProvider.getAllProjects();
-	}
+    @Override
+    public List<Project> getAllProjects() {
+        return dataProvider.getAllProjects();
+    }
 
-	@Override
-	public List<ProjectDetails> getAllProjectsDetails() {
-		return dataProvider.getAllProjectDetails();
-	}
+    @Override
+    public List<ProjectDetails> getAllProjectsDetails() {
+        return dataProvider.getAllProjectDetails();
+    }
 
-	@Override
-	public List<HistoryPoint> getHistory(Long id) {
-		// return dashboardServiceMock.getHistory(id);
-		List<HistoryPoint> list = dataProvider.getHistory(id);
-		Collections.sort(list);
-		return list;
-	}
+    @Override
+    public List<HistoryPoint> getHistory(Long id) {
+        // return dashboardServiceMock.getHistory(id);
+        List<HistoryPoint> list = dataProvider.getHistory(id);
+        Collections.sort(list);
+        return list;
+    }
 
-	@Override
-	public ProjectDetails getProjectsDetails(Long id) {
-		// TODO Auto-generated method stub
-		return dataProvider.getProjectDetailsById(id);
-	}
+    @Override
+    public ProjectDetails getProjectsDetails(Long id) {
+        // TODO Auto-generated method stub
+        return dataProvider.getProjectDetailsById(id);
+    }
 
-	@Override
-	public DashboardData getDashboardData(Long id) {
-		ProjectDetails details = getProjectsDetails(id);
-		DashboardData dashboardData = new DashboardData();
-		dashboardData.setDatosGenerales(details);
-		List<HistoryPoint> historyPoints = getHistory(id);
-		List<Plan> series = new LinkedList<Plan>();
-		for (int i = 0; i < historyPoints.size(); i++) {
-			HistoryPoint historyPoint = historyPoints.get(i);
-			Plan plan = new Plan();
-			plan.setFecha(historyPoint.getDate());
-			plan.setPlan(historyPoint.getPlan());
-			plan.setReal(historyPoint.getReal());
-			series.add(plan);
-		}
+    @Override
+    public DashboardData getDashboardData(Long id) {
+        ProjectDetails details = getProjectsDetails(id);
+        DashboardData dashboardData = new DashboardData();
+        dashboardData.setDatosGenerales(details);
+        List<HistoryPoint> historyPoints = getHistory(id);
+        List<Plan> series = new LinkedList<Plan>();
+        for (int i = 0; i < historyPoints.size(); i++) {
+            HistoryPoint historyPoint = historyPoints.get(i);
+            Plan plan = new Plan();
+            plan.setFecha(historyPoint.getDate());
+            plan.setPlan(historyPoint.getPlan());
+            plan.setReal(historyPoint.getReal());
+            plan.setBase(historyPoint.getBase());
+            series.add(plan);
+        }
 
-		dashboardData.setPlan(series);
+        dashboardData.setPlan(series);
 
-		dashboardData.setCosto(dataProvider.getCosto(id));
+        dashboardData.setCosto(dataProvider.getCosto(id));
 
-		// Resumen tareas
-		ResumenTareas resumenTareas = dataProvider.getResumenTareas(id);
-		dashboardData.setResumenTareas(resumenTareas);
+        // Resumen tareas
+        ResumenTareas resumenTareas = dataProvider.getResumenTareas(id);
+        dashboardData.setResumenTareas(resumenTareas);
 
-		// Riesgos
-		List<Riesgo> riesgos = dataProvider.getRiesgos(id);
-		dashboardData.setRiesgos(riesgos);
+        // Riesgos
+        List<Riesgo> riesgos = dataProvider.getRiesgos(id);
+        dashboardData.setRiesgos(riesgos);
 
-		// Signos vitales
-		SignosVitales signosVitales = dataProvider.getSignosVitales(id);
-		int costo = 1;
-		if (dashboardData.getCosto().getPlanificadoFecha() < dashboardData.getCosto().getGastado())
-			costo = 3;
-		
-		signosVitales.setCosto(costo);
+        // Signos vitales
+        SignosVitales signosVitales = dataProvider.getSignosVitales(id);
+        int costo = 1;
+        if (dashboardData.getCosto().getPlanificadoFecha() < dashboardData.getCosto().getGastado())
+            costo = 3;
 
-		int plan = 2;
-		if (dashboardData.getPlan().size() > 0) {
-			if (dashboardData.getPlan().get(dashboardData.getPlan().size() - 1).getPlan() > dashboardData.getPlan()
-					.get(dashboardData.getPlan().size() - 1).getReal())
-				plan = 3;
-		}
+        signosVitales.setCosto(costo);
 
-		signosVitales.setAvance(plan);
+        int plan = 2;
+        if (dashboardData.getPlan().size() > 0) {
+            if (dashboardData.getPlan().get(dashboardData.getPlan().size() - 1).getPlan() > dashboardData.getPlan()
+                    .get(dashboardData.getPlan().size() - 1).getReal())
+                plan = 3;
+        }
 
-		// int avance = 0;
-		// signosVitales.setAvance(avance);
-		dashboardData.setSignosVitales(signosVitales);
+        signosVitales.setAvance(plan);
 
-		return dashboardData;
-	}
+        // int avance = 0;
+        // signosVitales.setAvance(avance);
+        dashboardData.setSignosVitales(signosVitales);
+
+        return dashboardData;
+    }
 }
