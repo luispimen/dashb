@@ -14,7 +14,7 @@ public class HistoryPoint implements Comparable {
     private Long real;
     private Long plan;
     private Map<String, Long> lineasBaseMap = new HashMap<String, Long>();
-    private Long base;
+    private Long base = null;
 
     public HistoryPoint() {
     }

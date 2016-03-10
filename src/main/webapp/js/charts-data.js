@@ -2,228 +2,233 @@
 
 // Flot Line Chart with Tooltips
 $(document).ready(
-		function() {
-			initSelect()
+    function () {
+        initSelect()
 
-			data = {
-				"datosGenerales" : {
-					"nombre" : "b",
-					"descripcion" : "b",
-					"jefe" : "d",
-					"sponsor" : "d",
-					"lider" : "f"
-				}
-			}
-			function initDatosG() {
-				$('#nombreP').text(data.datosGenerales.name)
-				$('#jefeProyecto').text(data.datosGenerales.jefeProyecto)
-				$('#sponsor').text(data.datosGenerales.sponsor)
-				$('#liderProyecto').text(data.datosGenerales.lider)
-				$('#descripcion').text(data.datosGenerales.desc)
-				$('#resumen').text(data.datosGenerales.resumen)
-			}
+        data = {
+            "datosGenerales": {
+                "nombre": "b",
+                "descripcion": "b",
+                "jefe": "d",
+                "sponsor": "d",
+                "lider": "f"
+            }
+        }
+        function initDatosG() {
+            $('#nombreP').text(data.datosGenerales.name)
+            $('#jefeProyecto').text(data.datosGenerales.jefeProyecto)
+            $('#sponsor').text(data.datosGenerales.sponsor)
+            $('#liderProyecto').text(data.datosGenerales.lider)
+            $('#descripcion').text(data.datosGenerales.desc)
+            $('#resumen').text(data.datosGenerales.resumen)
+        }
 
-			function initSignosVitales() {
-				$("#costo").attr('data-scale', data.signosVitales.costo)
-				$('#avance').attr('data-scale', data.signosVitales.avance)
-				$('#documento')
-						.attr('data-scale', data.signosVitales.documento)
-				$('#rrhh').attr('data-scale', data.signosVitales.rrhh)
-				$('#problemas')
-						.attr('data-scale', data.signosVitales.problemas)
-				$('#cc').attr('data-scale', data.signosVitales.controlDeCambio)
-			}
+        function initSignosVitales() {
+            $("#costo").attr('data-scale', data.signosVitales.costo)
+            $('#avance').attr('data-scale', data.signosVitales.avance)
+            $('#documento')
+                .attr('data-scale', data.signosVitales.documento)
+            $('#rrhh').attr('data-scale', data.signosVitales.rrhh)
+            $('#problemas')
+                .attr('data-scale', data.signosVitales.problemas)
+            $('#cc').attr('data-scale', data.signosVitales.controlDeCambio)
+        }
 
-			function initCostos() {
-				$('#moneda').text(data.costo.moneda);
-				$('.presupuesto').text(data.costo.presupuesto);
-				$('#planificadoFecha').text(data.costo.planificadoFecha);
-				$('#gastado').text(data.costo.gastado);
-				$('#disponible').text(
-						data.costo.presupuesto - data.costo.gastado);
+        function initCostos() {
+            $('#moneda').text(data.costo.moneda);
+            $('.presupuesto').text(data.costo.presupuesto);
+            $('#planificadoFecha').text(data.costo.planificadoFecha);
+            $('#gastado').text(data.costo.gastado);
+            $('#disponible').text(
+                data.costo.presupuesto - data.costo.gastado);
 
-				var gastado = data.costo.gastado;
-				var pFecha = data.costo.planificadoFecha;
-				var indicador = 1;
-				if (pFecha == gastado)
-					indicador = 0
-				else if (pFecha < gastado)
-					idicador = 2;
+            var gastado = data.costo.gastado;
+            var pFecha = data.costo.planificadoFecha;
+            var indicador = 1;
+            if (pFecha == gastado)
+                indicador = 0
+            else if (pFecha < gastado)
+                idicador = 2;
 
-				$("#indicador").attr('data-scale', indicador);
+            $("#indicador").attr('data-scale', indicador);
 
-			}
+        }
 
-			function initTable() {
+        function initTable() {
 
-				var dataSet = [];
+            var dataSet = [];
 
-				data.riesgos.forEach(function(item) {
-					dataSet
-							.push([ item.factorDeRiesgo, item.impacto,
-									item.mitigacion, item.nombre,
-									item.variableAfectada ])
-				})
+            data.riesgos.forEach(function (item) {
+                dataSet
+                    .push([item.factorDeRiesgo, item.impacto,
+                        item.mitigacion, item.nombre,
+                        item.variableAfectada])
+            })
 
-				$('#table').DataTable({
-					"data" : dataSet,
-					"scrollY" : "280px",
-					"scrollCollapse" : true,
-					"paging" : false,
-					"ordering" : false,
-					"info" : false,
-					"searching" : false,
-					"bDestroy" : true
-				});
-			}
-			function initLists() {
-				$("#l1").empty()
-				$("#l2").empty()
-				$("#l3").empty()
+            $('#table').DataTable({
+                "data": dataSet,
+                "scrollY": "280px",
+                "scrollCollapse": true,
+                "paging": false,
+                "ordering": false,
+                "info": false,
+                "searching": false,
+                "bDestroy": true
+            });
+        }
 
-				data.resumenTareas.realizadas.forEach(function(item) {
-					$("#l1").append("<li>" + item + "</li>")
-				})
-				data.resumenTareas.retrasadas.forEach(function(item) {
-					$("#l2").append("<li>" + item + "</li>")
-				})
-				data.resumenTareas.proximas.forEach(function(item) {
-					$("#l3").append("<li>" + item + "</li>")
-				})
-			}
+        function initLists() {
+            $("#l1").empty()
+            $("#l2").empty()
+            $("#l3").empty()
 
-			function init(d) {
-				data = d
-				initDatosG()
-				initSignosVitales();
-				initCostos();
-				initGouge();
-				initPieChart(d);
-				planificacionChart(d);
-				initPlanificacion();
-				initTable();
-				initLists();
+            data.resumenTareas.realizadas.forEach(function (item) {
+                $("#l1").append("<li>" + item + "</li>")
+            })
+            data.resumenTareas.retrasadas.forEach(function (item) {
+                $("#l2").append("<li>" + item + "</li>")
+            })
+            data.resumenTareas.proximas.forEach(function (item) {
+                $("#l3").append("<li>" + item + "</li>")
+            })
+        }
 
-			}
+        function init(d) {
+            data = d
+            initDatosG()
+            initSignosVitales();
+            initCostos();
+            initGouge();
+            initPieChart(d);
+            planificacionChart(d);
+            initPlanificacion();
+            initTable();
+            initLists();
 
-			function initSelect() {
-				$.get(
-						"api/allprojects",
-						function(data) {
-							data = JSON.parse(data)
-							var select = $('.selectpicker');
-							for (var i = 0; i < data.length; i++) {
-								select.append($("<option value='" + data[i].id
-										+ "'>" + data[i].name + "</option>"))
-							}
-							select.selectpicker('refresh')
-							$('.selectpicker').selectpicker({
-								style : 'btn-info',
-								size : 4
-							});
-							select.on('change', function() {
-								$.get(
-										"api/projectdata?id=" + select.val(),
-										function(data) {
-											$('#dashboard').css('display',
-													'block');
-											init(JSON.parse(data))
+        }
 
-										}).error(function(e) {
-									console.log(e)
-								});
-							})
-						}).error(function(e) {
-					console.log(e)
-				});
+        function initSelect() {
+            $.get(
+                "api/allprojects",
+                function (data) {
+                    data = JSON.parse(data)
+                    var select = $('.selectpicker');
+                    for (var i = 0; i < data.length; i++) {
+                        select.append($("<option value='" + data[i].id
+                            + "'>" + data[i].name + "</option>"))
+                    }
+                    select.selectpicker('refresh')
+                    $('.selectpicker').selectpicker({
+                        style: 'btn-info',
+                        size: 4
+                    });
+                    select.on('change', function () {
+                        $.get(
+                            "api/projectdata?id=" + select.val(),
+                            function (data) {
+                                $('#dashboard').css('display',
+                                    'block');
+                                init(JSON.parse(data))
 
-			}
+                            }).error(function (e) {
+                            console.log(e)
+                        });
+                    })
+                }).error(function (e) {
+                console.log(e)
+            });
 
-			function initPieChart(d) {
-				var disponible = d.costo.presupuesto - d.costo.gastado;
-				var gastado = d.costo.gastado;
-				if (disponible == 0 && gastado == 0) {
-					disponible = 1;
-					gastado = 1;
-				}
-				var data = [ {
-					label : "Gastado&nbsp;&nbsp;",
-					data : gastado
-				}, {
-					label : "Disponible",
-					data : disponible
-				} ];
-				$("#pie-chart").empty()
-				$.plot($("#pie-chart"), data, {
-					series : {
-						pie : {
-							show : true
-						}
-					},
-					legend : {
-						show : true,
-						position : "sd",
-						noColumns : 2,
-						margin : 5
-					},
-					grid : {
-						hoverable : true
-					},
-					tooltip : true,
-					tooltipOpts : {
-						content : "%p.0%, %s", // show percentages, rounding to
-						// 2 decimal places
-						shifts : {
-							x : 20,
-							y : 0
-						}
-					}
-				});
-			}
+        }
 
-			function initGouge() {
-				$('#g1').empty()
-				if ($('#dashboard').is(":visible"))
-					g1 = new JustGage({
-						id : 'g1',
-						value : 0,
-						min : 0,
-						max : 100,
-						symbol : '%',
-						pointer : true,
-						gaugeWidthScale : 1.4,
-						customSectors : [ {
-							color : '#ff0000',
-							lo : 50,
-							hi : 100
-						}, {
-							color : '#00ff00',
-							lo : 0,
-							hi : 50
-						} ],
-						counter : true
-					});
-			}
+        function initPieChart(d) {
+            var disponible = d.costo.presupuesto - d.costo.gastado;
+            var gastado = d.costo.gastado;
+            if (disponible == 0 && gastado == 0) {
+                disponible = 1;
+                gastado = 1;
+            }
+            var data = [{
+                label: "Gastado&nbsp;&nbsp;",
+                data: gastado
+            }, {
+                label: "Disponible",
+                data: disponible
+            }];
+            $("#pie-chart").empty()
+            $.plot($("#pie-chart"), data, {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                legend: {
+                    show: true,
+                    position: "sd",
+                    noColumns: 2,
+                    margin: 5
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: "%p.0%, %s", // show percentages, rounding to
+                    // 2 decimal places
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    }
+                }
+            });
+        }
 
-			function planificacionChart(d) {
-				$('#planificacionChart').empty();
+        function initGouge() {
+            $('#g1').empty()
+            if ($('#dashboard').is(":visible"))
+                g1 = new JustGage({
+                    id: 'g1',
+                    value: 0,
+                    min: 0,
+                    max: 100,
+                    symbol: '%',
+                    pointer: true,
+                    gaugeWidthScale: 1.4,
+                    customSectors: [{
+                        color: '#ff0000',
+                        lo: 50,
+                        hi: 100
+                    }, {
+                        color: '#00ff00',
+                        lo: 0,
+                        hi: 50
+                    }],
+                    counter: true
+                });
+        }
 
-				var data = d.plan;
+        function planificacionChart(d) {
+            $('#planificacionChart').empty();
 
-				Morris.Line({
-					element : 'planificacionChart',
-					data : data,
-					xkey : 'fecha',
-					ykeys : [ 'plan', 'real', 'base' ],
-					labels : [ 'Plan', 'Real', 'base' ]
-				});
-			}
+            var data = d.plan;
+            for (i = 0; i < data.length; i++) {
+                if (data[i].base == '') data[i].base = null;
+                if (data[i].real == '') data[i].real = null;
+                if (data[i].plan == '') data[i].plan = null;
+            }
+            Morris.Line({
+                element: 'planificacionChart',
+                data: data,
+                xkey: 'fecha',
+                ykeys: ['plan', 'real', 'base'],
+                labels: ['Plan', 'Real', 'base']
+            });
+        }
 
-			function initPlanificacion() {
-				$('#p1').text(data.datosGenerales.porciento);
-				$('#p2').text('-');
-				$('#p3').text('-');
-				$('#p4').text(data.datosGenerales.startDate);
-				$('#p5').text(data.datosGenerales.endDate);
-			}
-		});
+        function initPlanificacion() {
+            $('#p1').text(data.datosGenerales.porciento);
+            $('#p2').text('-');
+            $('#p3').text('-');
+            $('#p4').text(data.datosGenerales.startDate);
+            $('#p5').text(data.datosGenerales.endDate);
+        }
+    });

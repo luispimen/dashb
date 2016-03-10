@@ -4,7 +4,7 @@ public class Plan {
     private String fecha;
     private Long plan;
     private Long real;
-    private Long base;
+    private Long base = null;
 
     public String getFecha() {
         return fecha;

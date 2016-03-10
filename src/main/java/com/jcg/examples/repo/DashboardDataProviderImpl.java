@@ -193,10 +193,9 @@ public class DashboardDataProviderImpl implements DashboardDataProvider {
                 while (resultSet.next()) {
                     HistoryPoint historyPoint = new HistoryPoint();
                     historyPoint.setDate(resultSet.getString("TO_CHAR(LABEL,'DD/MM/RR')"));
-                    historyPoint.setPlan(resultSet.getLong("PLAN"));
-                    historyPoint.setReal(resultSet.getLong("HECHO"));
-                    Long base = resultSet.getLong("BASE");
-                    if (base != null) historyPoint.setBase(base);
+                    if (resultSet.getString("PLAN") != null) historyPoint.setPlan((resultSet.getLong("PLAN")));
+                    if (resultSet.getString("HECHO") != null) historyPoint.setReal(resultSet.getLong("HECHO"));
+                    if (resultSet.getString("BASE") != null) historyPoint.setBase(resultSet.getLong("BASE"));
                     if (pointMap.containsKey(historyPoint.getDate())) {
                         if (pointMap.get(historyPoint.getDate()).getPlan() < historyPoint.getPlan()) {
                             pointMap.put(historyPoint.getDate(), historyPoint);
